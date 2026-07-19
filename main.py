@@ -112,5 +112,5 @@ def get_specificsec(section_wise:str):
        
     return res
     if not res:
-        return "student not found in the section"
+        return "student not found in the section as per the required"
 
