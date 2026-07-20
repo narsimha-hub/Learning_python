@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from models import Student
-
+from models import *
+from typing import List
 # app=FastAPI()
 # @app.get("/")
 # def home():
@@ -83,34 +83,95 @@ def get_students(student_id:int):
             return student
         
     return "student not found"
-@app.get("/students/name/{student_name}")
-def get_studentname(student_name:str):
-    for student in students:
-        if student.name==student_name:
-            return student
+# @app.get("/students/name/{student_name}")
+# def get_studentname(student_name:str):
+#     for student in students:
+#         if student.name==student_name:
+#             return student
         
-    return "student not found with the name"
+#     return "student not found with the name"
 
-@app.get("/students/rank/topper")
-def top_rank(topper:int):
-    for student in students:
-        if student.rank==topper:
-            return student
+# @app.get("/students/rank/topper")
+# def top_rank(topper:int):
+#     for student in students:
+#         if student.rank==topper:
+#             return student
         
-@app.get("/students/rank/stop")
-def topp_rank():
-    for student in students:
-        if student.rank==3:
-            return student 
+# @app.get("/students/rank/stop")
+# def topp_rank():
+#     for student in students:
+#         if student.rank==3:
+#             return student 
         
-@app.get("/students/section/{section_wise}")
-def get_specificsec(section_wise:str):
+# @app.get("/students/section/{section_wise}")
+# def get_specificsec(section_wise:str):
+#     res=[]
+#     for student in students:
+#         if student.section==section_wise:
+#             res.append(student)
+       
+#     return res
+#     if not res:
+#         return "student not found in the section as per the required"
+@app.get("/students")
+def get_allstudents():
     res=[]
     for student in students:
-        if student.section==section_wise:
-            res.append(student)
-       
+        res.append(student)
     return res
-    if not res:
-        return "student not found in the section as per the required"
+    
+    
 
+@app.post("/students")
+
+def add_post(student:Student):
+   
+    students.append(student)
+    print(students)
+    return student
+
+# next_id = 1
+
+
+# @app.post("/students")
+# def create_student(student_data: List[StudentCreate]):
+
+#     global next_id
+
+#     new_student = Student(
+#         id=next_id,
+#         name=student_data.name,
+#         roll=student_data.roll,
+#         rank=student_data.rank,
+#         section=student_data.section
+#     )
+
+#     students.append(new_student)
+
+#     next_id += 1
+
+#     return new_student
+
+# @app.get("/students")
+# def total():
+#     res=[]
+#     for student in students:
+#         res.append(student)
+#     return res
+
+@app.put("/students")
+def update(id:int,student:Student):
+    for i in range(len(students)):
+        if students[i].id==id:
+            students[i]=student
+            return "student added"
+    return "no student found"
+
+
+@app.delete("/students")
+def del_item(name:str):
+    for i in range(len(students)):
+        if students[i].name==name:
+            del students[i]
+            return "student deleted"
+    return "student not found"

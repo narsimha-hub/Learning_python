@@ -7,7 +7,9 @@ requires-python = ">=3.12"
 dependencies = [
     "asyncio>=4.0.0",
     "fastapi[standard]>=0.139.2",
+    "psycopg2>=2.9.12",
     "pydantic>=2.13.4",
     "qrcode[pil,pill]>=8.2",
+    "sqlalchemy>=2.0.51",
     "uvicorn>=0.51.0",
 ]
