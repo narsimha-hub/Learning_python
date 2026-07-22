@@ -115,10 +115,10 @@ def get_students(student_id:int):
 #         return "student not found in the section as per the required"
 @app.get("/students")
 def get_allstudents():
-    res=[]
-    for student in students:
-        res.append(student)
-    return res
+    # res=[]
+    # for student in students:
+    #     res.append(student)
+    return students
     
     
 
