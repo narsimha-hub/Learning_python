@@ -1,7 +1,7 @@
 import qrcode
 url=input("enter url").strip()
 # def urltoqr(url):
-file_path=r"C:\\Users\\narsi\\OneDrive\\Pictures\\qr_codess\\linkedinqrc.png"
+file_path=r"C:\\Users\\narsi\\OneDrive\\Pictures\\qr_codess\\overleaf resume.png"
 qr=qrcode.QRCode()
 qr.add_data(url)
 img=qr.make_image()
